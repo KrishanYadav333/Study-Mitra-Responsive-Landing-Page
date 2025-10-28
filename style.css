@@ -253,11 +253,29 @@ header {
   margin: 0 auto;
   padding: var(--spacing-md) var(--spacing-xl);
   border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.35) 30%, rgba(255, 255, 255, 0.20) 50%, rgba(255, 255, 255, 0.10) 70%, rgba(255, 255, 255, 0.03) 90%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .navbar.scrolled {
   background: rgba(10, 10, 15, 0.8);
   backdrop-filter: blur(30px);
+}
+
+.navbar.scrolled::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 30%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.15) 70%, rgba(255, 255, 255, 0.05) 90%, transparent 100%);
 }
 
 .logo {
