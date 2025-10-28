@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Study Mitra Courses - Premium IT courses in Data Science, Web Development, AI/ML, and more">
+  <meta name="keywords" content="IT courses, programming courses, data science, web development, AI ML courses">
+  <meta name="author" content="Study Mitra">
+  <title>Courses - Study Mitra</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar glass-morphism">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        Study Mitra
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html" class="active">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <button class="login-btn glass-btn">Login</button>
+        <button class="signup-btn gradient-btn">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Courses Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge glass-morphism">
+          <span>🎓 Premium Courses</span>
+        </div>
+        <h1 class="hero-title">
+          Master <span class="gradient-text">In-Demand Skills</span>
+        </h1>
+        <p class="hero-description">
+          Choose from our comprehensive range of industry-designed courses. Learn from experts, 
+          build real projects, and get job-ready with our proven curriculum.
+        </p>
+        <div class="course-filters glass-morphism">
+          <button class="filter-btn active" data-filter="all">All Courses</button>
+          <button class="filter-btn" data-filter="development">Development</button>
+          <button class="filter-btn" data-filter="data-science">Data Science</button>
+          <button class="filter-btn" data-filter="cloud">Cloud & DevOps</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Courses Section -->
+  <section class="all-courses">
+    <div class="container">
+      <div class="courses-grid">
+        <!-- Data Science & AI Course -->
+        <div class="course-card glass-morphism" data-category="data-science">
+          <div class="course-image">
+            <div class="course-badge bestseller">Bestseller</div>
+            <div class="course-icon-large">🤖</div>
+          </div>
+          <div class="course-content">
+            <h3>Data Science & AI Mastery</h3>
+            <p>Complete program covering Python, Machine Learning, Deep Learning, and AI. Build real-world projects and get industry-ready.</p>
+            <div class="course-highlights">
+              <span class="highlight">✓ 200+ Hours Content</span>
+              <span class="highlight">✓ 15+ Real Projects</span>
+              <span class="highlight">✓ Job Guarantee</span>
+            </div>
+            <div class="course-meta">
+              <span>⏱️ 16 weeks</span>
+              <span>👥 Live Classes</span>
+              <span>📜 Certificate</span>
+              <span>🎯 Beginner Friendly</span>
+            </div>
+            <div class="course-curriculum">
+              <h4>What you'll learn:</h4>
+              <ul>
+                <li>Python Programming & Libraries</li>
+                <li>Statistics & Data Analysis</li>
+                <li>Machine Learning Algorithms</li>
+                <li>Deep Learning & Neural Networks</li>
+                <li>Natural Language Processing</li>
+                <li>Computer Vision</li>
+              </ul>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">
+                <span class="original-price">₹1,49,999</span>
+                <span class="current-price">₹74,999</span>
+                <span class="discount">50% OFF</span>
+              </div>
+              <button class="enroll-btn gradient-btn">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Stack Development Course -->
+        <div class="course-card glass-morphism" data-category="development">
+          <div class="course-image">
+            <div class="course-badge new">New Batch</div>
+            <div class="course-icon-large">🌐</div>
+          </div>
+          <div class="course-content">
+            <h3>Full Stack Web Development</h3>
+            <p>Master modern web development with React, Node.js, MongoDB, and deployment. Build production-ready applications.</p>
+            <div class="course-highlights">
+              <span class="highlight">✓ MERN Stack</span>
+              <span class="highlight">✓ 10+ Projects</span>
+              <span class="highlight">✓ Portfolio Ready</span>
+            </div>
+            <div class="course-meta">
+              <span>⏱️ 12 weeks</span>
+              <span>👥 Live Classes</span>
+              <span>📜 Certificate</span>
+              <span>🎯 Intermediate</span>
+            </div>
+            <div class="course-curriculum">
+              <h4>What you'll learn:</h4>
+              <ul>
+                <li>HTML5, CSS3, JavaScript ES6+</li>
+                <li>React.js & Redux</li>
+                <li>Node.js & Express.js</li>
+                <li>MongoDB & Database Design</li>
+                <li>RESTful APIs & GraphQL</li>
+                <li>Deployment & DevOps</li>
+              </ul>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">
+                <span class="original-price">₹99,999</span>
+                <span class="current-price">₹49,999</span>
+                <span class="discount">50% OFF</span>
+              </div>
+              <button class="enroll-btn gradient-btn">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cloud Computing Course -->
+        <div class="course-card glass-morphism" data-category="cloud">
+          <div class="course-image">
+            <div class="course-badge popular">Popular</div>
+            <div class="course-icon-large">☁️</div>
+          </div>
+          <div class="course-content">
+            <h3>Cloud Computing & DevOps</h3>
+            <p>Master AWS, Azure, Docker, Kubernetes, and CI/CD pipelines. Become a certified cloud architect.</p>
+            <div class="course-highlights">
+              <span class="highlight">✓ Multi-Cloud</span>
+              <span class="highlight">✓ Hands-on Labs</span>
+              <span class="highlight">✓ Industry Certs</span>
+            </div>
+            <div class="course-meta">
+              <span>⏱️ 10 weeks</span>
+              <span>👥 Live Classes</span>
+              <span>📜 Certificate</span>
+              <span>🎯 Intermediate</span>
+            </div>
+            <div class="course-curriculum">
+              <h4>What you'll learn:</h4>
+              <ul>
+                <li>AWS Core Services</li>
+                <li>Azure Fundamentals</li>
+                <li>Docker & Containerization</li>
+                <li>Kubernetes Orchestration</li>
+                <li>CI/CD Pipelines</li>
+                <li>Infrastructure as Code</li>
+              </ul>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">
+                <span class="original-price">₹89,999</span>
+                <span class="current-price">₹44,999</span>
+                <span class="discount">50% OFF</span>
+              </div>
+              <button class="enroll-btn gradient-btn">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile App Development Course -->
+        <div class="course-card glass-morphism" data-category="development">
+          <div class="course-image">
+            <div class="course-badge hot">Hot</div>
+            <div class="course-icon-large">📱</div>
+          </div>
+          <div class="course-content">
+            <h3>Mobile App Development</h3>
+            <p>Build native and cross-platform mobile apps with React Native and Flutter. Deploy to App Store and Play Store.</p>
+            <div class="course-highlights">
+              <span class="highlight">✓ Cross-Platform</span>
+              <span class="highlight">✓ App Store Ready</span>
+              <span class="highlight">✓ Real Apps</span>
+            </div>
+            <div class="course-meta">
+              <span>⏱️ 14 weeks</span>
+              <span>👥 Live Classes</span>
+              <span>📜 Certificate</span>
+              <span>🎯 Intermediate</span>
+            </div>
+            <div class="course-curriculum">
+              <h4>What you'll learn:</h4>
+              <ul>
+                <li>React Native Development</li>
+                <li>Flutter & Dart</li>
+                <li>Mobile UI/UX Design</li>
+                <li>Native Device Features</li>
+                <li>App Store Deployment</li>
+                <li>Mobile App Testing</li>
+              </ul>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">
+                <span class="original-price">₹79,999</span>
+                <span class="current-price">₹39,999</span>
+                <span class="discount">50% OFF</span>
+              </div>
+              <button class="enroll-btn gradient-btn">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cybersecurity Course -->
+        <div class="course-card glass-morphism" data-category="security">
+          <div class="course-image">
+            <div class="course-badge trending">Trending</div>
+            <div class="course-icon-large">🔒</div>
+          </div>
+          <div class="course-content">
+            <h3>Cybersecurity Specialist</h3>
+            <p>Learn ethical hacking, penetration testing, and security analysis. Become a certified cybersecurity professional.</p>
+            <div class="course-highlights">
+              <span class="highlight">✓ Ethical Hacking</span>
+              <span class="highlight">✓ Pen Testing</span>
+              <span class="highlight">✓ Industry Certs</span>
+            </div>
+            <div class="course-meta">
+              <span>⏱️ 12 weeks</span>
+              <span>👥 Live Classes</span>
+              <span>📜 Certificate</span>
+              <span>🎯 Advanced</span>
+            </div>
+            <div class="course-curriculum">
+              <h4>What you'll learn:</h4>
+              <ul>
+                <li>Network Security</li>
+                <li>Ethical Hacking Techniques</li>
+                <li>Penetration Testing</li>
+                <li>Security Analysis</li>
+                <li>Incident Response</li>
+                <li>Compliance & Governance</li>
+              </ul>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">
+                <span class="original-price">₹99,999</span>
+                <span class="current-price">₹49,999</span>
+                <span class="discount">50% OFF</span>
+              </div>
+              <button class="enroll-btn gradient-btn">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digital Marketing Course -->
+        <div class="course-card glass-morphism" data-category="marketing">
+          <div class="course-image">
+            <div class="course-badge growing">Growing</div>
+            <div class="course-icon-large">📈</div>
+          </div>
+          <div class="course-content">
+            <h3>Digital Marketing Mastery</h3>
+            <p>Master SEO, SEM, social media marketing, and analytics. Build comprehensive digital marketing strategies.</p>
+            <div class="course-highlights">
+              <span class="highlight">✓ Complete Digital</span>
+              <span class="highlight">✓ Real Campaigns</span>
+              <span class="highlight">✓ Google Certified</span>
+            </div>
+            <div class="course-meta">
+              <span>⏱️ 8 weeks</span>
+              <span>👥 Live Classes</span>
+              <span>📜 Certificate</span>
+              <span>🎯 Beginner</span>
+            </div>
+            <div class="course-curriculum">
+              <h4>What you'll learn:</h4>
+              <ul>
+                <li>SEO & Content Marketing</li>
+                <li>Google Ads & PPC</li>
+                <li>Social Media Marketing</li>
+                <li>Email Marketing</li>
+                <li>Analytics & Reporting</li>
+                <li>Marketing Automation</li>
+              </ul>
+            </div>
+            <div class="course-footer">
+              <div class="course-price">
+                <span class="original-price">₹59,999</span>
+                <span class="current-price">₹29,999</span>
+                <span class="discount">50% OFF</span>
+              </div>
+              <button class="enroll-btn gradient-btn">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning Path Section -->
+  <section class="learning-paths">
+    <div class="container">
+      <div class="section-header">
+        <h2>Structured Learning Paths</h2>
+        <p>Follow our carefully designed learning paths for maximum career impact</p>
+      </div>
+      <div class="paths-grid">
+        <div class="path-card glass-morphism">
+          <div class="path-icon">🚀</div>
+          <h3>Beginner to Pro Developer</h3>
+          <p>Complete journey from basics to advanced development</p>
+          <div class="path-courses">
+            <span>Web Fundamentals</span>
+            <span>Full Stack Development</span>
+            <span>Advanced Projects</span>
+          </div>
+          <div class="path-duration">6 Months Journey</div>
+        </div>
+        <div class="path-card glass-morphism">
+          <div class="path-icon">📊</div>
+          <h3>Data Science Career Track</h3>
+          <p>From data analysis to machine learning mastery</p>
+          <div class="path-courses">
+            <span>Python Basics</span>
+            <span>Data Science</span>
+            <span>AI/ML Specialization</span>
+          </div>
+          <div class="path-duration">8 Months Journey</div>
+        </div>
+        <div class="path-card glass-morphism">
+          <div class="path-icon">☁️</div>
+          <h3>Cloud Architecture Path</h3>
+          <p>Become a certified cloud solutions architect</p>
+          <div class="path-courses">
+            <span>Cloud Fundamentals</span>
+            <span>DevOps Practices</span>
+            <span>Architecture Design</span>
+          </div>
+          <div class="path-duration">5 Months Journey</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

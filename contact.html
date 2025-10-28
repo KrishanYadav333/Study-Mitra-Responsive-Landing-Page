@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Study Mitra - Get in touch for course inquiries and career guidance">
+  <meta name="keywords" content="contact study mitra, course inquiry, career guidance, IT education support">
+  <meta name="author" content="Study Mitra">
+  <title>Contact - Study Mitra</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar glass-morphism">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        Study Mitra
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <button class="login-btn glass-btn">Login</button>
+        <button class="signup-btn gradient-btn">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contact Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge glass-morphism">
+          <span>💬 Get In Touch</span>
+        </div>
+        <h1 class="hero-title">
+          Ready to <span class="gradient-text">Transform Your Career?</span>
+        </h1>
+        <p class="hero-description">
+          Have questions about our courses? Need career guidance? Our expert counselors are here to help you 
+          choose the right path for your tech career journey.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="contact-methods">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Multiple Ways to Reach Us</h2>
+          <p>Choose the most convenient way to connect with our team</p>
+          
+          <div class="contact-cards">
+            <div class="contact-card glass-morphism">
+              <div class="contact-icon">📞</div>
+              <div class="contact-details">
+                <h3>Phone Support</h3>
+                <p>Speak directly with our counselors</p>
+                <a href="tel:+918800123456" class="contact-link">+91 88001 23456</a>
+                <span class="availability">Mon-Sat, 9 AM - 8 PM</span>
+              </div>
+            </div>
+
+            <div class="contact-card glass-morphism">
+              <div class="contact-icon">💬</div>
+              <div class="contact-details">
+                <h3>Live Chat</h3>
+                <p>Get instant answers to your queries</p>
+                <button class="contact-link gradient-btn">Start Chat</button>
+                <span class="availability">24/7 Available</span>
+              </div>
+            </div>
+
+            <div class="contact-card glass-morphism">
+              <div class="contact-icon">📧</div>
+              <div class="contact-details">
+                <h3>Email Support</h3>
+                <p>Detailed queries and documentation</p>
+                <a href="mailto:support@studymitra.com" class="contact-link">support@studymitra.com</a>
+                <span class="availability">Response within 2 hours</span>
+              </div>
+            </div>
+
+            <div class="contact-card glass-morphism">
+              <div class="contact-icon">📍</div>
+              <div class="contact-details">
+                <h3>Visit Our Office</h3>
+                <p>Meet our team in person</p>
+                <address class="contact-link">
+                  Study Mitra HQ<br>
+                  Tech Park, Sector 62<br>
+                  Noida, UP 201309
+                </address>
+                <span class="availability">Mon-Fri, 10 AM - 6 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-section">
+          <div class="contact-form glass-morphism">
+            <h2>Send us a Message</h2>
+            <p>Fill out the form below and we'll get back to you within 24 hours</p>
+            
+            <form id="contactForm" class="form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+
+              <div class="form-group">
+                <label for="course">Course Interest</label>
+                <select id="course" name="course">
+                  <option value="">Select a course</option>
+                  <option value="data-science">Data Science & AI</option>
+                  <option value="full-stack">Full Stack Development</option>
+                  <option value="cloud">Cloud Computing & DevOps</option>
+                  <option value="mobile">Mobile App Development</option>
+                  <option value="cybersecurity">Cybersecurity</option>
+                  <option value="digital-marketing">Digital Marketing</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="experience">Current Experience Level</label>
+                <select id="experience" name="experience">
+                  <option value="">Select experience level</option>
+                  <option value="beginner">Complete Beginner</option>
+                  <option value="some-knowledge">Some Knowledge</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="experienced">Experienced</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Tell us about your career goals, questions, or any specific requirements..."></textarea>
+              </div>
+
+              <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="newsletter" name="newsletter">
+                  <span class="checkmark"></span>
+                  Subscribe to our newsletter for course updates and career tips
+                </label>
+              </div>
+
+              <button type="submit" class="submit-btn gradient-btn">
+                <span class="btn-text">Send Message</span>
+                <span class="btn-loading" style="display: none;">Sending...</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Quick answers to common questions about our courses and programs</p>
+      </div>
+      
+      <div class="faq-grid">
+        <div class="faq-category glass-morphism">
+          <h3>Course Information</h3>
+          <div class="faq-items">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How long are the courses?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                Our courses range from 8-16 weeks depending on the program. Each course includes live classes, hands-on projects, and mentorship sessions.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Are the classes live or recorded?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                We offer live interactive classes with expert instructors. All sessions are also recorded for your reference and revision.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Do I get a certificate?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                Yes, you'll receive an industry-recognized certificate upon successful completion of the course and projects.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category glass-morphism">
+          <h3>Career Support</h3>
+          <div class="faq-items">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Do you provide job placement assistance?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                Yes, we have a dedicated placement team that works with 500+ hiring partners to help you land your dream job.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What is your placement success rate?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                We maintain a 95% placement success rate with an average salary increase of 150% for our graduates.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Do you offer career counseling?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                Absolutely! Our career counselors provide personalized guidance throughout your learning journey and beyond.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category glass-morphism">
+          <h3>Technical Requirements</h3>
+          <div class="faq-items">
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What equipment do I need?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                You need a computer/laptop with internet connection. We'll guide you through setting up all necessary software and tools.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Do I need prior programming experience?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                No prior experience required for beginner courses. We start from basics and gradually build up to advanced concepts.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Is there any age limit?</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                There's no age limit! We welcome learners from all backgrounds and age groups who are passionate about technology.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content glass-morphism">
+        <h2>Still Have Questions?</h2>
+        <p>Book a free consultation call with our career counselors</p>
+        <div class="cta-buttons">
+          <button class="gradient-btn">Book Free Consultation</button>
+          <button class="glass-btn">Download Course Brochure</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
