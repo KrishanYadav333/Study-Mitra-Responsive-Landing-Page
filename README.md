@@ -2,6 +2,10 @@
 
 A modern, responsive landing page for Study Mitra, an IT education platform built with liquid glass morphism design.
 
+## Live Demo
+
+**[View Live Website](https://krishanyadav333.github.io/Study-Mitra-Responsive-Landing-Page/)**
+
 ## Preview
 
 ![Study Mitra Landing Page](preview.png)
