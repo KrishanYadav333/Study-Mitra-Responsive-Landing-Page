@@ -710,8 +710,15 @@ section:first-of-type:not(.hero):not(.page-hero) {
 }
 
 .course-icon-large {
-  font-size: 4rem;
+  width: 100px;
+  height: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: var(--spacing-md);
+  background: var(--glass-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
 }
 
 .course-content h3 {
