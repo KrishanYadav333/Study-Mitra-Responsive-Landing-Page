@@ -267,6 +267,7 @@ header {
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+  min-height: 72px; /* lock height — prevents reflow when Clerk swaps content */
 }
 
 .navbar::before {
@@ -355,6 +356,13 @@ header {
   display: flex;
   gap: var(--spacing-md);
   align-items: center;
+  justify-content: flex-end;
+  min-width: 180px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.nav-cta.clerk-ready {
+  opacity: 1;
 }
 
 /* Hero Section */
@@ -415,6 +423,8 @@ header {
   border-radius: var(--radius-lg);
   align-items: center;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 50;
 }
 
 .search-input {

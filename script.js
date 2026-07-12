@@ -60,7 +60,26 @@ const CATEGORY_MAP = {
   'Cloud Computing':      'cloud'
 };
 
-// Hero search bar (index.html) — navigate to courses.html with query params
+// Course list for search suggestions
+const COURSES = [
+  { name: 'HTML & CSS Mastery',            category: 'development' },
+  { name: 'JavaScript Deep Dive',          category: 'development' },
+  { name: 'React.js Bootcamp',             category: 'development' },
+  { name: 'Angular Development',           category: 'development' },
+  { name: 'Node.js Backend',               category: 'development' },
+  { name: 'Bootstrap Framework',           category: 'development' },
+  { name: 'C++ Programming',               category: 'development' },
+  { name: 'C Programming',                 category: 'development' },
+  { name: 'Java Programming',              category: 'development' },
+  { name: 'Python Programming',            category: 'development' },
+  { name: 'Data Science & Machine Learning', category: 'data-science' },
+  { name: 'Ethical Hacking',               category: 'development' },
+  { name: 'Beginner to Pro Developer',     category: 'development' },
+  { name: 'Data Science Career Track',     category: 'data-science' },
+  { name: 'Cloud Architecture Path',       category: 'cloud' },
+];
+
+// Hero search bar (index.html) — navigate to courses.html with query params + live suggestions
 function initHeroSearch() {
   const searchInput    = document.querySelector('.search-input');
   const categorySelect = document.querySelector('.category-select');
@@ -68,23 +87,82 @@ function initHeroSearch() {
 
   if (!searchBtn) return; // not on home page
 
+  // Build suggestion dropdown
+  const dropdown = document.createElement('ul');
+  dropdown.className = 'search-suggestions';
+  dropdown.style.cssText = [
+    'position:absolute',
+    'top:100%',
+    'left:0',
+    'right:0',
+    'background:rgba(15,15,30,0.97)',
+    'border:1px solid rgba(255,255,255,0.12)',
+    'border-radius:12px',
+    'margin-top:6px',
+    'padding:6px 0',
+    'list-style:none',
+    'z-index:9999',
+    'display:none',
+    'backdrop-filter:blur(16px)',
+    'box-shadow:0 8px 32px rgba(0,0,0,0.4)',
+    'max-height:210px',
+    'overflow-y:auto',
+  ].join(';');
+
+  // Wrap input in relative container so dropdown positions correctly
+  const wrapper = searchInput.parentElement;
+  const wrapStyle = window.getComputedStyle(wrapper).position;
+  if (wrapStyle === 'static') wrapper.style.position = 'relative';
+  wrapper.appendChild(dropdown);
+
+  function showSuggestions(query) {
+    if (!query) { dropdown.style.display = 'none'; return; }
+    const q = query.toLowerCase();
+    const matches = COURSES.filter(c => c.name.toLowerCase().includes(q));
+    if (matches.length === 0) { dropdown.style.display = 'none'; return; }
+
+    dropdown.innerHTML = '';
+    matches.forEach(course => {
+      const li = document.createElement('li');
+      // Bold matching part
+      const idx = course.name.toLowerCase().indexOf(q);
+      li.innerHTML =
+        course.name.slice(0, idx) +
+        '<strong>' + course.name.slice(idx, idx + query.length) + '</strong>' +
+        course.name.slice(idx + query.length);
+      li.style.cssText = 'padding:10px 16px;cursor:pointer;color:#e2e8f0;font-size:0.95em;border-radius:8px;margin:2px 6px;transition:background 0.15s';
+      li.addEventListener('mouseenter', () => li.style.background = 'rgba(99,102,241,0.25)');
+      li.addEventListener('mouseleave', () => li.style.background = '');
+      li.addEventListener('mousedown', (e) => {
+        e.preventDefault(); // prevent input blur before click fires
+        searchInput.value = course.name;
+        dropdown.style.display = 'none';
+        doSearch();
+      });
+      dropdown.appendChild(li);
+    });
+    dropdown.style.display = 'block';
+  }
+
   function doSearch() {
     const q   = searchInput ? searchInput.value.trim() : '';
     const raw = categorySelect ? categorySelect.value : '';
     const cat = CATEGORY_MAP[raw] || 'all';
     const params = new URLSearchParams();
-    if (q)          params.set('q',   q);
+    if (q)             params.set('q',   q);
     if (cat !== 'all') params.set('cat', cat);
     const qs = params.toString();
     window.location.href = 'courses.html' + (qs ? '?' + qs : '');
   }
 
+  searchInput.addEventListener('input',  () => showSuggestions(searchInput.value.trim()));
+  searchInput.addEventListener('focus',  () => showSuggestions(searchInput.value.trim()));
+  searchInput.addEventListener('blur',   () => setTimeout(() => { dropdown.style.display = 'none'; }, 150));
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { dropdown.style.display = 'none'; doSearch(); }
+    if (e.key === 'Escape') dropdown.style.display = 'none';
+  });
   searchBtn.addEventListener('click', doSearch);
-  if (searchInput) {
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') doSearch();
-    });
-  }
 }
 
 // courses.html — read URL params on load and apply filter + text search
@@ -198,11 +276,10 @@ function init() {
 
 // Performance monitoring (optional)
 function logPerformance() {
-  if (window.performance && window.performance.timing) {
-    const timing = window.performance.timing;
-    const loadTime = timing.loadEventEnd - timing.navigationStart;
-    console.log(`Page load time: ${loadTime}ms`);
-  }
+  window.addEventListener('load', () => {
+    const loadTime = performance.now();
+    console.log(`Page load time: ${Math.round(loadTime)}ms`);
+  });
 }
 
 // Error handling for the entire application
@@ -433,10 +510,8 @@ function initScrollAnimations() {
 
 // Live chat simulation
 function initLiveChat() {
-  const chatButtons = document.querySelectorAll('button:contains("Start Chat")');
-  
-  chatButtons.forEach(button => {
-    if (button.textContent.includes('Start Chat')) {
+  document.querySelectorAll('button').forEach(button => {
+    if (button.textContent.trim() === 'Start Chat') {
       button.addEventListener('click', () => {
         alert('Live chat feature coming soon! For immediate assistance, please call +91 88001 23456 or email support@studymitra.com');
       });
@@ -552,7 +627,11 @@ const initClerk = async () => {
 
       navCtas.forEach(cta => {
         if (window.Clerk.user) {
-          // User is signed in
+          // Already mounted — skip to avoid flicker
+          if (cta.querySelector('.user-button-container')) {
+            cta.classList.add('clerk-ready');
+            return;
+          }
           cta.innerHTML = '<div class="user-button-container" style="display:flex; align-items:center;"></div>';
           window.Clerk.mountUserButton(cta.querySelector('.user-button-container'), {
             appearance: {
@@ -565,7 +644,11 @@ const initClerk = async () => {
             }
           });
         } else {
-          // User is signed out
+          // Already showing login/signup — skip
+          if (cta.querySelector('.login-btn')) {
+            cta.classList.add('clerk-ready');
+            return;
+          }
           cta.innerHTML = `
             <button class="login-btn glass-btn">Login</button>
             <button class="signup-btn gradient-btn">Sign Up</button>
@@ -573,6 +656,8 @@ const initClerk = async () => {
           cta.querySelector('.login-btn').addEventListener('click', () => window.Clerk.openSignIn());
           cta.querySelector('.signup-btn').addEventListener('click', () => window.Clerk.openSignUp());
         }
+        // Reveal nav-cta only after auth state is known — prevents flash of wrong buttons
+        cta.classList.add('clerk-ready');
       });
     };
 
