@@ -52,9 +52,81 @@ function initScrollHandler() {
   addSafeEventListener(window, 'scroll', throttledScrollHandler);
 }
 
+// Map home page category select values → courses.html data-filter values
+const CATEGORY_MAP = {
+  'Web Development':      'development',
+  'Data Science':         'data-science',
+  'Digital Marketing':    'development',
+  'Cloud Computing':      'cloud'
+};
+
+// Hero search bar (index.html) — navigate to courses.html with query params
+function initHeroSearch() {
+  const searchInput    = document.querySelector('.search-input');
+  const categorySelect = document.querySelector('.category-select');
+  const searchBtn      = document.querySelector('.search-btn');
+
+  if (!searchBtn) return; // not on home page
+
+  function doSearch() {
+    const q   = searchInput ? searchInput.value.trim() : '';
+    const raw = categorySelect ? categorySelect.value : '';
+    const cat = CATEGORY_MAP[raw] || 'all';
+    const params = new URLSearchParams();
+    if (q)          params.set('q',   q);
+    if (cat !== 'all') params.set('cat', cat);
+    const qs = params.toString();
+    window.location.href = 'courses.html' + (qs ? '?' + qs : '');
+  }
+
+  searchBtn.addEventListener('click', doSearch);
+  if (searchInput) {
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') doSearch();
+    });
+  }
+}
+
+// courses.html — read URL params on load and apply filter + text search
+function initCoursesSearchFromURL() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  if (filterButtons.length === 0) return; // not on courses page
+
+  const params = new URLSearchParams(window.location.search);
+  const q      = (params.get('q')   || '').toLowerCase().trim();
+  const cat    = (params.get('cat') || 'all').trim();
+
+  // Apply category filter button
+  if (cat !== 'all') {
+    filterButtons.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-filter') === cat);
+    });
+  }
+
+  // Apply text + category filter to cards
+  const courseCards = document.querySelectorAll('.course-card');
+  if (courseCards.length === 0) return;
+
+  courseCards.forEach(card => {
+    const cardCat  = card.getAttribute('data-category') || '';
+    const cardText = card.innerText.toLowerCase();
+    const catMatch = cat === 'all' || cardCat === cat;
+    const qMatch   = !q || cardText.includes(q);
+    card.style.display = (catMatch && qMatch) ? 'block' : 'none';
+  });
+
+  // If search term present, scroll to courses section
+  if (q || cat !== 'all') {
+    const section = document.querySelector('.all-courses');
+    if (section) setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+  }
+}
+
 // Initialize the application
 function init() {
   initScrollHandler();
+  initHeroSearch();
+  initCoursesSearchFromURL();
 }
 
 // Start the application when DOM is loaded
@@ -421,6 +493,8 @@ function init() {
   initScrollAnimations();
   initLiveChat();
   initCourseEnrollment();
+  initHeroSearch();
+  initCoursesSearchFromURL();
   addAnimations();
   
   // Set initial state
