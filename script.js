@@ -450,7 +450,7 @@ document.addEventListener('click', (e) => {
 });
 
 // Clerk Authentication System
-const CLERK_PK = 'pk_live_Y2xlcmsua3Jpc2hhbnlhZGF2MzMzLmdpdGh1Yi5pbyQ';
+const CLERK_PK = 'pk_test_ZXhhY3QtdHVya2V5LTM1LmNsZXJrLmFjY291bnRzLmRldiQ';
 
 const initClerk = async () => {
   // window.Clerk here is the Clerk CLASS (not instance) — script loaded without data-clerk-publishable-key
