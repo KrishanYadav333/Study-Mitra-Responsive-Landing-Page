@@ -62,13 +62,14 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {
   init();
-}// Smo
-oth scroll navigation
+}
+
+// Smooth scroll navigation
 function handleNavigation(event) {
-  event.preventDefault();
-  
   const targetId = event.target.getAttribute('href');
   if (!targetId || !targetId.startsWith('#')) return;
+  
+  event.preventDefault();
   
   const targetElement = safeQuerySelector(targetId);
   if (!targetElement) {
@@ -121,8 +122,9 @@ function init() {
   
   // Set initial state
   handleScroll();
-}// Pe
-rformance monitoring (optional)
+}
+
+// Performance monitoring (optional)
 function logPerformance() {
   if (window.performance && window.performance.timing) {
     const timing = window.performance.timing;
@@ -137,8 +139,9 @@ window.addEventListener('error', function(event) {
 });
 
 // Initialize performance monitoring
-window.addEventListener('load', logPerformance);// Cont
-act form handling
+window.addEventListener('load', logPerformance);
+
+// Contact form handling
 function handleContactForm() {
   const contactForm = document.getElementById('contactForm');
   if (!contactForm) return;
@@ -186,8 +189,9 @@ function init() {
   
   // Set initial state
   handleScroll();
-}/
-/ Course filtering functionality
+}
+
+// Course filtering functionality
 function initCourseFilters() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const courseCards = document.querySelectorAll('.course-card');
@@ -334,6 +338,8 @@ function initScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        // Fallback for older script logic
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
       }
@@ -341,12 +347,14 @@ function initScrollAnimations() {
   }, observerOptions);
 
   // Observe elements that should animate on scroll
-  const animateElements = document.querySelectorAll('.course-card, .feature-card, .testimonial-card, .mission-card, .value-card, .team-card');
+  const animateElements = document.querySelectorAll('.course-card, .modern-course-card, .latest-course-card, .category-card, .stat-item, .feature-card, .feature-item, .testimonial-card, .mission-card, .value-card, .team-card, .instructor-card, .timeline-item');
   
   animateElements.forEach(el => {
+    el.classList.add('reveal-item');
+    // Keep inline styles for backward compatibility or let CSS handle it
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    el.style.transition = 'opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
     observer.observe(el);
   });
 }
@@ -426,3 +434,86 @@ function init() {
     });
   }, 3000);
 }
+
+
+
+// Clerk button delegation — works before and after Clerk loads, survives innerHTML replacement
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.login-btn')) {
+    if (window.Clerk) window.Clerk.openSignIn();
+    else console.warn('Clerk not loaded — check browser console for errors');
+  }
+  if (e.target.closest('.signup-btn')) {
+    if (window.Clerk) window.Clerk.openSignUp();
+    else console.warn('Clerk not loaded — check browser console for errors');
+  }
+});
+
+// Clerk Authentication System
+const CLERK_PK = 'pk_live_Y2xlcmsua3Jpc2hhbnlhZGF2MzMzLmdpdGh1Yi5pbyQ';
+
+const initClerk = async () => {
+  // window.Clerk here is the Clerk CLASS (not instance) — script loaded without data-clerk-publishable-key
+  if (!window.Clerk) {
+    if(!window._clerkWait) window._clerkWait = 0;
+    window._clerkWait += 50;
+    if(window._clerkWait > 3000 && !window._clerkAlerted) {
+        window._clerkAlerted = true;
+        console.warn("Clerk Auth failed to load. Are you running via file:// instead of http://localhost?");
+    }
+    setTimeout(initClerk, 50);
+    return;
+  }
+
+  try {
+    // v4: data-clerk-publishable-key sets window.Clerk to instance; .load() initializes WITH UI components
+    await window.Clerk.load({
+      navigate: (to) => { window.location.href = to; },
+      afterSignInUrl: window.location.origin + '/Study-Mitra-Responsive-Landing-Page/',
+      afterSignUpUrl: window.location.origin + '/Study-Mitra-Responsive-Landing-Page/',
+    });
+
+    const updateAuthUI = () => {
+      const navCtas = document.querySelectorAll('.nav-cta');
+
+      navCtas.forEach(cta => {
+        if (window.Clerk.user) {
+          // User is signed in
+          cta.innerHTML = '<div class="user-button-container" style="display:flex; align-items:center;"></div>';
+          window.Clerk.mountUserButton(cta.querySelector('.user-button-container'), {
+            appearance: {
+              elements: {
+                userButtonAvatarBox: {
+                  width: '40px',
+                  height: '40px'
+                }
+              }
+            }
+          });
+        } else {
+          // User is signed out
+          cta.innerHTML = `
+            <button class="login-btn glass-btn">Login</button>
+            <button class="signup-btn gradient-btn">Sign Up</button>
+          `;
+          cta.querySelector('.login-btn').addEventListener('click', () => window.Clerk.openSignIn());
+          cta.querySelector('.signup-btn').addEventListener('click', () => window.Clerk.openSignUp());
+        }
+      });
+    };
+
+    // Initial call
+    updateAuthUI();
+
+    // Add listener for state changes (e.g. login/logout)
+    window.Clerk.addListener(() => {
+      updateAuthUI();
+    });
+
+  } catch(e) {
+    console.error("Clerk load error:", e);
+  }
+};
+
+// Start initialization
+initClerk();

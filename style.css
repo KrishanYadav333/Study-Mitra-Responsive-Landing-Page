@@ -1,32 +1,35 @@
-/* Import Inter Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
-/* CSS Custom Properties - Liquid Glass Morphism Theme */
+/* CSS Custom Properties - Premium Glass Morphism Theme */
 :root {
-  /* Glass Morphism Colors */
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  /* Harmonized Gradients */
+  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --secondary-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  --accent-gradient: linear-gradient(135deg, #f43f5e 0%, #fb923c 100%);
+  --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --surface-gradient: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
 
-  /* Background Colors */
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #1a1a2e;
-  --bg-tertiary: #16213e;
+  /* Premium Dark Background Colors */
+  --bg-primary: #030712;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
 
-  /* Glass Morphism Properties */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --glass-backdrop: blur(20px);
+  /* Refined Glass Morphism Properties */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --glass-shadow-hover: 0 16px 48px rgba(59, 130, 246, 0.2);
+  --glass-backdrop: blur(24px);
 
   /* Text Colors */
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.8);
-  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
 
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Outfit', var(--font-family);
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -79,6 +82,13 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
 /* Animated Background */
@@ -89,64 +99,66 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: radial-gradient(ellipse at top, #1e3c72 0%, #2a5298 50%, #0a0a0f 100%);
+  background: var(--bg-primary);
+  overflow: hidden;
 }
 
 .floating-shapes {
   position: absolute;
   width: 100%;
   height: 100%;
+  filter: blur(100px);
+  opacity: 0.5;
 }
 
 .shape {
   position: absolute;
   border-radius: 50%;
-  filter: blur(1px);
   animation: float 20s infinite linear;
 }
 
 .shape-1 {
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  top: 10%;
-  left: 10%;
+  width: 40vw;
+  height: 40vw;
+  background: rgba(59, 130, 246, 0.15); /* Blue */
+  top: -10%;
+  left: -10%;
   animation-delay: 0s;
 }
 
 .shape-2 {
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(45deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));
-  top: 60%;
-  right: 10%;
+  width: 35vw;
+  height: 35vw;
+  background: rgba(139, 92, 246, 0.15); /* Purple */
+  top: 40%;
+  right: -10%;
   animation-delay: -5s;
 }
 
 .shape-3 {
-  width: 150px;
-  height: 150px;
-  background: linear-gradient(45deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
-  bottom: 20%;
+  width: 30vw;
+  height: 30vw;
+  background: rgba(6, 182, 212, 0.15); /* Cyan */
+  bottom: -10%;
   left: 20%;
   animation-delay: -10s;
 }
 
 .shape-4 {
-  width: 250px;
-  height: 250px;
-  background: linear-gradient(45deg, rgba(67, 233, 123, 0.1), rgba(56, 249, 215, 0.1));
-  top: 30%;
+  width: 25vw;
+  height: 25vw;
+  background: rgba(16, 185, 129, 0.1); /* Emerald */
+  top: 20%;
   right: 30%;
   animation-delay: -15s;
 }
 
 .shape-5 {
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  bottom: 40%;
-  right: 50%;
+  width: 20vw;
+  height: 20vw;
+  background: rgba(244, 63, 94, 0.1); /* Rose */
+  bottom: 20%;
+  right: 40%;
   animation-delay: -8s;
 }
 
@@ -2238,3 +2250,175 @@ body.contact-page .page-hero,
     padding-top: calc(var(--spacing-md) + var(--navbar-height));
   }
 }
+
+/* Premium Footer Styles */
+.premium-footer {
+  margin-top: var(--spacing-3xl);
+  padding: var(--spacing-3xl) 0 var(--spacing-md);
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid var(--glass-border);
+  position: relative;
+  z-index: 10;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-3xl);
+}
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-brand .logo {
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-desc {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+}
+
+.social-links {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--primary-gradient);
+  transform: translateY(-3px);
+  color: white;
+  border-color: transparent;
+}
+
+.footer-links h3, .footer-contact h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-lg);
+  font-weight: 600;
+  color: white;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: var(--font-size-sm);
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+  transform: translateX(5px);
+}
+
+.contact-info {
+  list-style: none;
+}
+
+.contact-info li {
+  display: flex;
+  gap: var(--spacing-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  align-items: flex-start;
+}
+
+.contact-info i {
+  color: #3b82f6; /* Accent color */
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.footer-legal {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.footer-legal a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: var(--text-primary);
+}
+
+/* Lucide Icons Global Sizing */
+.lucide {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+.course-icon .lucide, .feature-icon .lucide, .category-icon .lucide, .mission-icon .lucide, .value-icon .lucide {
+  width: 1.5em;
+  height: 1.5em;
+}
+.stat-icon .lucide, .team-avatar .lucide, .instructor-avatar .lucide {
+  width: 2em;
+  height: 2em;
+}
+
+/* Premium Card Hover Effects */
+.glass-morphism {
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease;
+}
+
+.course-card:hover, .modern-course-card:hover, .latest-course-card:hover, .category-card:hover, .feature-card:hover, .stat-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--glass-shadow-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.gradient-btn:hover {
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+}
+
+
