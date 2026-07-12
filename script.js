@@ -601,6 +601,23 @@ document.addEventListener('click', (e) => {
 // Clerk Authentication System
 const CLERK_PK = 'pk_test_ZXhhY3QtdHVya2V5LTM1LmNsZXJrLmFjY291bnRzLmRldiQ';
 
+// Pre-render nav from cached auth state — eliminates flash on page navigation
+(function preRenderNav() {
+  const wasSignedIn = sessionStorage.getItem('clerk_signed_in') === 'true';
+  document.querySelectorAll('.nav-cta').forEach(cta => {
+    if (wasSignedIn) {
+      // Placeholder avatar — data-placeholder marks it as not-yet-mounted
+      cta.innerHTML = '<div class="user-button-container" data-placeholder="true" style="display:flex;align-items:center;"><div style="width:40px;height:40px;border-radius:50%;background:rgba(99,102,241,0.3);"></div></div>';
+    } else {
+      cta.innerHTML = `
+        <button class="login-btn glass-btn">Login</button>
+        <button class="signup-btn gradient-btn">Sign Up</button>
+      `;
+    }
+    cta.classList.add('clerk-ready'); // show immediately — no flash
+  });
+})();
+
 const initClerk = async () => {
   // window.Clerk here is the Clerk CLASS (not instance) — script loaded without data-clerk-publishable-key
   if (!window.Clerk) {
@@ -627,8 +644,10 @@ const initClerk = async () => {
 
       navCtas.forEach(cta => {
         if (window.Clerk.user) {
-          // Already mounted — skip to avoid flicker
-          if (cta.querySelector('.user-button-container')) {
+          sessionStorage.setItem('clerk_signed_in', 'true');
+          const container = cta.querySelector('.user-button-container');
+          // Skip only if real UserButton already mounted (not placeholder)
+          if (container && !container.dataset.placeholder) {
             cta.classList.add('clerk-ready');
             return;
           }
@@ -644,7 +663,8 @@ const initClerk = async () => {
             }
           });
         } else {
-          // Already showing login/signup — skip
+          sessionStorage.setItem('clerk_signed_in', 'false');
+          // Buttons already rendered by preRenderNav + delegation handlers cover clicks
           if (cta.querySelector('.login-btn')) {
             cta.classList.add('clerk-ready');
             return;
@@ -656,7 +676,6 @@ const initClerk = async () => {
           cta.querySelector('.login-btn').addEventListener('click', () => window.Clerk.openSignIn());
           cta.querySelector('.signup-btn').addEventListener('click', () => window.Clerk.openSignUp());
         }
-        // Reveal nav-cta only after auth state is known — prevents flash of wrong buttons
         cta.classList.add('clerk-ready');
       });
     };
